@@ -91,6 +91,36 @@ This template uses:
 - **Biome v2** - Fast, modern linting and formatting
 - **esbuild** - Bundles TypeScript with dependencies
 
+## Forgejo Compatibility
+
+This template is compatible with both GitHub Actions and Forgejo Actions:
+
+### Setup for Forgejo
+
+1. The repository includes a symlink from `.forgejo/workflows` to `.github/workflows`, so workflows work on both platforms automatically.
+
+2. **Runner Compatibility**: The default `ubuntu-latest` runner works on both platforms. For Forgejo instances that require specific runner configurations, you may need to adjust the `runs-on` values in workflows.
+
+3. **Action References**: Most action references (like `actions/checkout@v4`) work on both platforms as Forgejo maintains compatibility with common GitHub Actions.
+
+### Platform-Specific Considerations
+
+- **Token**: Both platforms provide `GITHUB_TOKEN` for compatibility
+- **Context Variables**: GitHub context variables (like `github.event`, `github.repository`) work on both platforms
+- **Secrets**: Both platforms support secrets in the same way
+
+### Testing on Forgejo
+
+To test these actions on a Forgejo instance:
+
+```yaml
+# Works on both GitHub and Forgejo
+- uses: actions/checkout@v4
+- uses: ./hello-world
+  with:
+    name: 'Forgejo'
+```
+
 ## License
 
 MIT
