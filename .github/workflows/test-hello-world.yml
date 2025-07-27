@@ -1,0 +1,30 @@
+name: Test Hello World Action
+
+on:
+  push:
+    branches: [ modernize-without-ncc ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Name to greet'
+        required: false
+        default: 'World'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Test Hello World Action
+        uses: ./hello-world
+        id: hello
+        with:
+          name: ${{ github.event.inputs.name || 'GitHub Actions' }}
+          
+      - name: Print Greeting
+        run: |
+          echo "The greeting was: ${{ steps.hello.outputs.greeting }}"

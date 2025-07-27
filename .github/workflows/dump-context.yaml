@@ -1,0 +1,17 @@
+name: Dump Context
+
+on:
+  workflow_dispatch:
+  # push:
+  #   tags:        
+  #     - 'v*'
+
+jobs: 
+  dump-context:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Dump Context
+        uses: ./dump-context

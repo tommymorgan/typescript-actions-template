@@ -1,0 +1,28 @@
+{
+  "packageManager": "pnpm@10.13.1",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit && node scripts/build.js",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
+    "semver": "^7.7.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.1.2",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@types/node": "^24.1.0",
+    "@types/semver": "^7.7.0",
+    "esbuild": "^0.25.8",
+    "husky": "^9.1.7",
+    "typescript": "^5.8.3"
+  },
+  "license": "MIT",
+  "version": "1.1.0"
+}
